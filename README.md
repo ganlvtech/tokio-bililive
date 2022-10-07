@@ -2,7 +2,7 @@
 
 Simple Bilibili Live Room TCP Listener Based on Tokio Runtime
 
-Really simple implement. Not zero cost. Lots of copy opertion.
+Really simple implementation. Non zero cost. Lots of copy operation.
 
 ## Usage
 
@@ -19,7 +19,9 @@ tokio-bililive = { git = "https://github.com/ganlvtech/tokio-bililive.git", vers
 
 ## Examples
 
-See [simple-danmaku](./examples/simple-danmaku/src/main.rs)
+See [simple-danmaku](./examples/simple-danmaku/src/main.rs).
+
+Only `DANMU_MSG` struct is provided. If you need to decode other messages, you should define structures by yourself. Try [JSON to Rust Serde](https://transform.tools/json-to-rust-serde).
 
 ## LICENSE
 
