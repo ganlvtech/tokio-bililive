@@ -1,5 +1,5 @@
 [package]
-name = "tokio-bililive"
+name = "simple-danmaku"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,14 +7,7 @@ edition = "2021"
 
 [dependencies]
 anyhow = "1.0.65"
-brotli-decompressor = "2.3.2"
-byteorder = "1.4.3"
-inflate = "0.4.5"
-reqwest = { version = "0.11.12", features = ["cookies", "json"] }
 serde = { version = "1.0.145", features = ["derive"] }
 serde_json = "1.0.85"
 tokio = { version = "1.21.2", features = ["full"] }
-
-[[example]]
-name = "simple-danmaku"
-path = "examples/simple-danmaku/src/main.rs"
+tokio-bililive = { path = "../", version = "0.1.0" }
