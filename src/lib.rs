@@ -633,36 +633,3 @@ pub mod messages {
         }
     }
 }
-
-#[cfg(test)]
-mod tests {
-    use crate::{Client, Message};
-    use crate::messages::danmu_msg::DanmuMsg;
-
-    #[tokio::test]
-    async fn it_works() -> anyhow::Result<()> {
-        let room_id = 2029840;
-        let mut client = Client::new_anonymous(room_id).await?;
-        println!("Room {} Connected", room_id);
-        loop {
-            let message = client.next().await?;
-            match message {
-                Message::OpHeartbeatReply(v) => {
-                    println!("Room {} Popularity: {}", room_id, v.popularity);
-                }
-                Message::OpMessage(v) => {
-                    match v.cmd.as_str() {
-                        "DANMU_MSG" => {
-                            let v = serde_json::from_slice::<DanmuMsg>(&v.data)?;
-                            println!("Room {} Danmaku: [{}|{}] {}: {}", room_id, v.fans_medal_name(), v.fans_medal_level(), v.uname(), v.msg());
-                            break;
-                        }
-                        _ => {}
-                    }
-                }
-                _ => {}
-            }
-        }
-        Ok(())
-    }
-}
